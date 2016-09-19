@@ -7,15 +7,19 @@ import { cloneChildrenWithClassName } from '../utils/react';
 
 export const styleSheet = createStyleSheet('CardActions', () => ({
   cardActions: {
-    padding: '8px 4px',
+    height: 52,
+    display: 'flex',
+    alignItems: 'center',
+    padding: '2px 4px',
   },
-  cardAction: {
+  actionSpacing: {
     margin: '0 4px',
   },
-}), { index: 10 });
+}), { index: -5 });
 
 export default function CardActions(props, context) {
   const {
+    actionSpacing,
     children,
     className: classNameProp,
     ...other,
@@ -26,14 +30,19 @@ export default function CardActions(props, context) {
 
   return (
     <div className={className} {...other}>
-      {cloneChildrenWithClassName(children, classes.cardAction)}
+      {actionSpacing ? cloneChildrenWithClassName(children, classes.actionSpacing) : children}
     </div>
   );
 }
 
 CardActions.propTypes = {
+  actionSpacing: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
+};
+
+CardActions.defaultProps = {
+  actionSpacing: true,
 };
 
 CardActions.contextTypes = {

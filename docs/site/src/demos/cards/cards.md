@@ -28,7 +28,7 @@ Here's an example of a media control card.
 
 ## Complex Interaction
 
-On desktop, card content can expand and scroll internally in addition to housing other interactive content.
+On desktop, card content can expand and scroll internally.
 
-{{demo='cards/RestaurantReviewCard.js'}}
+{{demo='cards/RecipeReviewCard.js'}}
 

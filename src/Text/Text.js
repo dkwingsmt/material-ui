@@ -31,8 +31,11 @@ export const styleSheet = createStyleSheet('Text', (theme) => {
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',
     },
+    gutterBottom: { marginBottom: '0.25em' },
+    paragraph: { marginBottom: 16 },
+    secondary: { color: theme.palette.text.secondary },
   };
-}, { index: 5 });
+}, { index: -10 });
 
 class Text extends Component {
   static propTypes = {
@@ -40,7 +43,10 @@ class Text extends Component {
     children: PropTypes.node,
     className: PropTypes.string,
     component: PropTypes.string,
+    gutterBottom: PropTypes.bool,
     noWrap: PropTypes.bool,
+    paragraph: PropTypes.bool,
+    secondary: PropTypes.bool,
     type: PropTypes.string,
   };
 
@@ -57,17 +63,27 @@ class Text extends Component {
     const {
       align,
       className: classNameProp,
-      component,
+      component: componentProp,
+      gutterBottom,
       noWrap,
+      paragraph,
+      secondary,
       type,
       ...other,
     } = this.props;
+
     const classes = this.context.styleManager.render(styleSheet);
+
     const className = classNames(classes.text, {
       [classes[type]]: true,
       [classes.noWrap]: noWrap,
+      [classes.secondary]: secondary,
+      [classes.gutterBottom]: gutterBottom,
+      [classes.paragraph]: paragraph,
       [classes.center]: align === 'center',
     }, classNameProp);
+
+    const component = paragraph ? 'p' : componentProp;
 
     return React.createElement(component, { className, ...other });
   }

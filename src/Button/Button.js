@@ -49,6 +49,10 @@ export const styleSheet = createStyleSheet('Button', (theme) => {
     accent: {
       color: palette.accent.A200,
     },
+    contrast: {
+      color: theme.palette.type === 'light' ?
+        theme.palette.shades.dark.primary : theme.palette.shades.light.secondary,
+    },
     raised: {
       color: palette.getContrastText(palette.grey[300]),
       backgroundColor: palette.grey[300],
@@ -92,7 +96,7 @@ export const styleSheet = createStyleSheet('Button', (theme) => {
       },
     },
   };
-}, { index: 2 });
+}, { index: -10 });
 
 /**
  * Buttons communicate the action that will occur when the user

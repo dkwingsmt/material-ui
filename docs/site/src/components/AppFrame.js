@@ -44,7 +44,7 @@ const globalStyleSheet = createStyleSheet('global', (theme) => ({
 
 const styleSheet = createStyleSheet('AppFrame', (theme) => {
   return {
-    root: {
+    appFrame: {
       display: 'flex',
       alignItems: 'stretch',
       minHeight: '100vh',
@@ -183,15 +183,15 @@ class AppFrame extends Component {
     }
 
     return (
-      <div className={classes.root}>
+      <div className={classes.appFrame}>
         <AppBar className={appBarClassName}>
           <Toolbar>
-            <IconButton onClick={this.handleDrawerToggle} className={navIconClassName}>
+            <IconButton contrast onClick={this.handleDrawerToggle} className={navIconClassName}>
               menu
             </IconButton>
             <Text className={classes.title} type="title">{title}</Text>
             <div className={classes.grow} />
-            <IconButton onClick={this.handleToggleShade} className={classes.toggleShade}>
+            <IconButton contrast onClick={this.handleToggleShade} className={classes.toggleShade}>
               lightbulb_outline
             </IconButton>
           </Toolbar>
